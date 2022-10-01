@@ -13,7 +13,7 @@ router.route("/").get(render_index);
 router.route("/sign-up").get(render_sign_up).post(sign_up);
 router.route("/log-in").post(
   passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/restricted",
     failureRedirect: "/",
     failureMessage: true,
   })

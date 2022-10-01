@@ -43,6 +43,7 @@ const QuerySchema = new mongoose.Schema({
     },
     trim: true,
   },
+  isAdmin: { type: Boolean, default: false, trim: true },
 });
 
 module.exports = mongoose.model("Query", QuerySchema);

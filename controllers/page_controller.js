@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const bcrypt = require("bcryptjs");
 
 const render_index = (req, res) => {
   let messages = [];
@@ -19,9 +20,16 @@ const render_sign_up = (req, res) => {
 };
 
 const sign_up = async (req, res) => {
+  // await User.create({
+  //   name: req.body.name,
+  //   email: req.body.email,
+  //   password: req.body.password,
+  // });
+  const hashedPassword = await bcrypt.hash(req.body.password, 10);
   await User.create({
-    username: req.body.username,
-    password: req.body.password,
+    name: req.body.name,
+    email: req.body.email,
+    password: hashedPassword,
   });
   res.redirect("/");
 };
@@ -38,7 +46,7 @@ const render_restricted = (req, res) => {
 const log_out = (req, res) => {
   req.session.destroy(function (err) {
     if (err) {
-      console.log(err)
+      console.log(err);
     }
     res.redirect("/");
   });
