@@ -4,15 +4,15 @@
     <%- include('../partials/head'); %>
   </head>
   <body class="container">
-    <header><%- include('../partials/header'); %></header>
+    <header class="hdr"><%- include('../partials/header'); %></header>
 
     <main>
       <div class="jumbotron">
         <% messages.forEach((msg) =>{ %>
-        <p><%= msg %></p>
+        <p class="msg"><%= msg %></p>
         <% }) %> <% if (currentUser) {%>
-
-        <h4>Welcome to our Legal Inquiries Page:</h4>
+        <h5>Hey <b><%= currentUser.name %></b>!</h5>
+        <h4>Welcome to our Legal Inquiry Page:</h4>
         <br />
         <h1>Got a legal Inquiry?</h1>
         <br />
@@ -22,12 +22,12 @@
           else.
         </p>
         <h2>How?</h2>
-        <br />
-        <h4>
-          To be able to submit your legal questions, you'll need to register<br />
-          your account and provide some information. You can submit as many
+
+        <p>
+          To be able to submit your legal questions, you'll need to register
+          your account and provide some information. \n You can submit as many
           inquiries as you want. See examples below:
-        </h4>
+        </p>
 
         <blockquote>
           <b>Category</b>: "Green Card", <b>Question</b>: "I need help
@@ -37,12 +37,12 @@
           <b>Category</b>: "Family Reunification", <b>Question</b>: "I need to
           schedule an appointment."
         </blockquote>
-        <div class="sdb">
-          <p>Please don't forget to before leaving the site.</p>
+        <div class="sdblg">
+          <p>Please don't forget to logout before leaving the site.</p>
           <a class="btn btn-primary" href="/log-out">LOG OUT</a>
         </div>
         <% } else { %>
-        <h4>Welcome to our Legal Inquiries Page:</h4>
+        <h4>Welcome to our Legal Inquiry Page:</h4>
         <br />
         <h1>Got a legal Inquiry?</h1>
         <br />
@@ -68,7 +68,7 @@
           schedule an appointment."
         </p>
 
-        <div class="sdb">
+        <div class="sdblg">
           <form action="/log-in" method="POST">
             <label for="email">Email:</label><br />
             <input name="email" placeholder="Email" type="text" /><br />
@@ -79,7 +79,8 @@
               type="password"
             /><br /><br />
             <button class="btn btn-primary">Log In</button>
-          </form>
+          </form> or <br>
+          <a class="btn btn-primary" href="/sign-up">Sign Up</a></h4>
         </div>
 
         <%}%>

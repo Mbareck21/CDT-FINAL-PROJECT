@@ -12,29 +12,30 @@
 <main>
   <div class="jumbotron">
     <% messages.forEach((msg) =>{ %>
-      <p><%= msg %></p>
+      <p class="msg"><%= msg %></p>
    <% }) %>
     <% if (currentUser) {%>
-      <h3>Welcome back <%= currentUser.name %>! Please answer some Inquiries</h3> 
+      <p>Hey <b><%= currentUser.name %></b>!</p> 
    
         <% if (queries.length > 0) { %>
 
           <table class="table">
-          <tr><th>Category</th><th>Question</th><th>Response</th><th>Date Created</th><th colspan="5"></th></tr>
+          <tr><th>Category</th><th>Question</th><th>Response</th><th>Date Created</th><th colspan="5">Edit / Delete</th></tr>
           <% queries.forEach(function(query){ %>
-            <tr><td><%= query.category %></td><td><%= query.question %></td><td><%= query.response %></td><td><%= query.date %></td>
+            <tr><td><%= query.category %></td><td class="question"><%= query.question %></td><td class="response"><%= query.response %></td><td><%= query.date %></td>
               <td><a href=<%= "/queries/edit/" + query.id %>  class="btn btn-primary">Edit</a></td>
               <td><a href=<%= "/queries/delete/" + query.id %>  class="btn btn-primary">Delete</a></td>
             </tr>
             <% }) %>
+            <div class="sdblg-out"><a class="btn btn-primary" href="/log-out">LOG OUT</a></div><br>
           </table>
           <a href="/queries/add" class="btn btn-primary">Add Inquiry</a><br><br><br>
-          <a class="btn btn-primary" href="/log-out">LOG OUT</a>
     <% } else { %>
       <h4>There are no Inquiries to show! Please add one.</h4>
       <a href="/queries/add" class="btn btn-primary">Add Inquiry</a><br><br><br>
 
-      <a href="/api/v1/auth/login" class="btn btn-primary" >Log-in</a>
+      <a class="btn btn-primary" href="/log-out">LOG OUT</a>
+
 
     <% } %>
     <% } %>

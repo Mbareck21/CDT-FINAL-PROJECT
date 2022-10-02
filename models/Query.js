@@ -1,4 +1,5 @@
 const { default: mongoose } = require("mongoose");
+const { DateTime } = require("luxon");
 
 // require oomgoose and create a Schema, which define the Query parameters
 const QuerySchema = new mongoose.Schema({
@@ -37,13 +38,9 @@ const QuerySchema = new mongoose.Schema({
     type: String,
   },
   date: {
-    type: Date,
-    default: () => {
-      return new Date();
-    },
-    trim: true,
+    type: String,
+    default: DateTime.now().toLocaleString(DateTime.DATE_MED),
   },
-  isAdmin: { type: Boolean, default: false, trim: true },
 });
 
 module.exports = mongoose.model("Query", QuerySchema);

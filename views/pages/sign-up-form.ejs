@@ -4,18 +4,21 @@
     <%- include('../partials/head'); %>
   </head class="container">
 <body class="container">
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
   <div class="jumbotron"> 
   <h1>Sign Up</h1>
   <% messages.forEach((msg) =>{ %>
-    <p><%= msg %></p>
+    <p class="msg"><%= msg %></p>
  <% }) %>
  <form action="" method="POST">
-  <label for="name">Name:</label>
+  <label for="name">Name:</label><br>
   <input type="text" name="name" placeholder="name"><br>
-  <label for="email">Email:</label>
+  <label for="email">Email:</label><br>
   <input type="text" name="email" placeholder="email"><br>
-  <label for="password">Password:</label>
-  <input type="password" name="password" placeholder="password">
+  <label for="password">Password:</label><br>
+  <input type="password" name="password" placeholder="password"><br><br>
   <button type="submit" class=" btn btn-primary">Sign Up</button>
 </form><br><br>
   </div>

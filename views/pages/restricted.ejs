@@ -11,19 +11,19 @@
   <main>
   <div class="jumbotron"> 
   <% messages.forEach((msg) =>{ %>
-    <p><%= msg %></p>
+    <p class="msg"><%= msg %></p>
  <% }) %>
   <% if (currentUser) {%>
-    <h1>WELCOME BACK <%= currentUser.name %></h1>
+    <h5>Hey <b><%= currentUser.name %></b>!</h5>
     <p>You can access a restricted page <a href="/queries">here.</a></p>
     <a class="btn btn-primary" href="/log-out">LOG OUT</a>
   <% } else { %>
-    <h1>Please log in or <a class="btn btn-primary" href="/sign-up">Sign Up</a></h1>
+    <h4>Please log in or <a class="btn btn-primary" href="/sign-up">Sign Up</a></h4>
     <form action="/log-in" method="POST">
-      <label for="email">Emial:</label>
-      <input name="email" placeholder="Email" type="text" />
-      <label for="password">Password:</label>
-      <input name="password"  placeholder="Password" type="password" />
+      <label for="email">Email:</label><br>
+      <input name="email" placeholder="Email" type="text" /><br>
+      <label for="password">Password:</label><br>
+      <input name="password"  placeholder="Password" type="password" /><br><br>
       <button class="btn btn-primary">Log In</button>
     </form>
   <%}%>

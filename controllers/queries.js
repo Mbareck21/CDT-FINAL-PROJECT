@@ -100,17 +100,14 @@ const getQueries = async (req, res) => {
     //if iaAdmin
     if (req.user.isAdmin) {
       const queries = await Query.find();
-      // req.session.pendingMessage = `Welcome ${req.user.name}! Please find you legal inquiries below:`;
-      res.render("pages/queries", { queries, messages:[] });
+      res.render("pages/queries", { queries, messages: [] });
     }
     const queries = await Query.find({ createdBy: req.user.name });
 
     if (queries) {
-      // req.session.pendingMessage = `Welcome ${req.user.name}! Please find you legal inquiries below:`;
-      res.render("pages/queries", { queries, messages:[]});
+      res.render("pages/queries", { queries, messages: [] });
     }
   } catch (err) {
-    res.locals.message = "User has logged out!"
     res.render("pages/queries", { queries: [] });
   }
 };
