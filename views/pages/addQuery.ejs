@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <%- include('../partials/head'); %>
+  </head>
+<body class="container">
+    <header>
+            <%- include('../partials/header'); %>
+    </header>
+    <main>
+        <div class="jumbotron">
+           
+        <form action="/queries" method="post">
+            <label for="category">Category:</label><br>
+            <select name="category">
+                <option value="Select One">Select One</option>
+                <option value="Green Card">Green Card</option>
+                <option value="Citizenship">Citizenship</option>
+                <option value="Asylum">Asylum</option>
+                <option value="TPS">TPS</option>
+                <option value="Family Reunification">Family Reunification</option>
+            </select><br>
+            <label for="question">Question:</label><br>
+            <textarea name="question" cols="30" rows="2" placeholder="Please write your question here"></textarea><br><br>
+            
+            <button class="btn btn-secondary" type="submit">Add</button>
+        </form>
+        </div>
+    </main>
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+</html>
