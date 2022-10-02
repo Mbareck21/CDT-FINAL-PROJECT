@@ -4,7 +4,7 @@ const authMiddleware = (req, res, next) => {
       req.session.messages = [];
     }
     req.session.messages.push("You can't access that page before logon.");
-    res.redirect("/");
+    res.redirect("/restricted");
   } else {
     next();
   }

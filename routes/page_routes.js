@@ -5,6 +5,7 @@ const router = express.Router();
 const {
   render_index,
   render_sign_up,
+  render_restricted,
   sign_up,
   log_out,
 } = require("../controllers/page_controller");
@@ -18,6 +19,7 @@ router.route("/log-in").post(
     failureMessage: true,
   })
 );
+router.route("/restricted").get(render_restricted);
 router.route("/log-out").get(log_out);
 
 module.exports = router;

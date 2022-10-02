@@ -14,6 +14,9 @@
     <% messages.forEach((msg) =>{ %>
       <p><%= msg %></p>
    <% }) %>
+    <% if (currentUser) {%>
+      <h3>Welcome back <%= currentUser.name %>! Please answer some Inquiries</h3> 
+   
         <% if (queries.length > 0) { %>
 
           <table class="table">
@@ -33,6 +36,7 @@
 
       <a href="/api/v1/auth/login" class="btn btn-primary" >Log-in</a>
 
+    <% } %>
     <% } %>
   </div>
 </main>
