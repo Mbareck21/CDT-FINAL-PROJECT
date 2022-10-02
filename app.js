@@ -8,7 +8,7 @@ const MongoDBStore = require("connect-mongodb-session")(session);
 const passport_init = require("./passport/passport_init");
 const connectDB = require("./db/connect");
 const page_router = require("./routes/page_routes");
-const restricted_router = require("./routes/restricted_routes");
+const queriesRoute = require("./routes/queries");
 const { authMiddleware, setCurrentUser } = require("./middleware/auth");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 const notFoundMiddleware = require("./middleware/not-found");
@@ -42,7 +42,9 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(setCurrentUser);
 app.use("/", page_router);
-app.use("/restricted", authMiddleware, restricted_router);
+// app.use("/restricted", authMiddleware, restricted_router);
+app.use("/queries", authMiddleware, queriesRoute);
+
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 

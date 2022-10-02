@@ -20,11 +20,7 @@ const render_sign_up = (req, res) => {
 };
 
 const sign_up = async (req, res) => {
-  // await User.create({
-  //   name: req.body.name,
-  //   email: req.body.email,
-  //   password: req.body.password,
-  // });
+  
   const hashedPassword = await bcrypt.hash(req.body.password, 10);
   await User.create({
     name: req.body.name,
@@ -33,15 +29,20 @@ const sign_up = async (req, res) => {
   });
   res.redirect("/");
 };
+//render query form
 
-const render_restricted = (req, res) => {
-  if (!req.session.pageCount) {
-    req.session.pageCount = 1;
-  } else {
-    req.session.pageCount++;
+const render_queries = (req, res) => {
+  let messages = [];
+  if (req.session.messages) {
+    messages = req.session.messages;
+    req.session.messages = [];
   }
-  res.render("pages/restricted", { pageCount: req.session.pageCount });
-};
+  res.render("pages/queries", { messages });
+}
+
+// const render_restricted = (req, res) => {
+//   res.render("pages/restricted");
+// };
 
 const log_out = (req, res) => {
   req.session.destroy(function (err) {
@@ -56,6 +57,7 @@ module.exports = {
   render_index,
   render_sign_up,
   sign_up,
-  render_restricted,
+  render_queries,
+  // render_restricted,
   log_out,
 };
