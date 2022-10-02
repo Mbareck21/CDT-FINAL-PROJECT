@@ -3,27 +3,88 @@
   <head>
     <%- include('../partials/head'); %>
   </head>
-<body class="container">
-  <main>
-  <div class="jumbotron"> 
-  <% messages.forEach((msg) =>{ %>
-    <p><%= msg %></p>
- <% }) %>
-  <% if (currentUser) {%>
-    <h1>WELCOME BACK <%= currentUser.name %></h1>
-    <p>You can access a restricted page <a href="/queries">here.</a></p>
-    <a class="btn btn-primary" href="/log-out">LOG OUT</a>
-  <% } else { %>
-    <h1>Please log in or <a class="btn btn-primary" href="/sign-up">Sign Up</a></h1>
-    <form action="/log-in" method="POST">
-      <label for="email">Emial:</label>
-      <input name="email" placeholder="Email" type="text" />
-      <label for="password">Password</label>
-      <input name="password"  placeholder="Password" type="password" />
-      <button class="btn btn-primary">Log In</button>
-    </form>
-  <%}%>
-  </div>
-</main>
-</body>
+  <body class="container">
+    <header class="hdr"><%- include('../partials/header'); %></header>
+
+    <main>
+      <div class="jumbotron">
+        <% messages.forEach((msg) =>{ %>
+        <p class="msg"><%= msg %></p>
+        <% }) %> <% if (currentUser) {%>
+        <h5>Hey <b><%= currentUser.name %></b>!</h5>
+        <h4>Welcome to our Legal Inquiry Page:</h4>
+        <br />
+        <h1>Got a legal Inquiry?</h1>
+        <br />
+
+        <p>
+          Here you can submit your legal regarding your pending case or anything
+          else.
+        </p>
+        <h2>How?</h2>
+
+        <p>
+          To be able to submit your legal questions, you'll need to register
+          your account and provide some information. \n You can submit as many
+          inquiries as you want. See examples below:
+        </p>
+
+        <blockquote>
+          <b>Category</b>: "Green Card", <b>Question</b>: "I need help
+          applying."<br />
+          <b>Category</b>: "TPS", <b>Question</b>: "Any update on my
+          application?"<br />
+          <b>Category</b>: "Family Reunification", <b>Question</b>: "I need to
+          schedule an appointment."
+        </blockquote>
+        <div class="sdblg">
+          <p>Please don't forget to logout before leaving the site.</p>
+          <a class="btn btn-primary" href="/log-out">LOG OUT</a>
+        </div>
+        <% } else { %>
+        <h4>Welcome to our Legal Inquiry Page:</h4>
+        <br />
+        <h1>Got a legal Inquiry?</h1>
+        <br />
+
+        <p>
+          Here you can submit your legal regarding your pending case or anything
+          else.
+        </p>
+        <h2>How?</h2>
+        <br />
+        <p>
+          To be able to submit your legal questions, you'll need to register<br />
+          your account and provide some information. You can submit as many
+          inquiries as you want. See examples below:
+        </p>
+
+        <p>
+          <b>Category</b>: "Green Card", <b>Question</b>: "I need help
+          applying."<br />
+          <b>Category</b>: "TPS", <b>Question</b>: "Any update on my
+          application?"<br />
+          <b>Category</b>: "Family Reunification", <b>Question</b>: "I need to
+          schedule an appointment."
+        </p>
+
+        <div class="sdblg">
+          <form action="/log-in" method="POST">
+            <label for="email">Email:</label><br />
+            <input name="email" placeholder="Email" type="text" /><br />
+            <label for="password">Password:</label><br />
+            <input
+              name="password"
+              placeholder="Password"
+              type="password"
+            /><br /><br />
+            <button class="btn btn-primary">Log In</button>
+          </form> or <br>
+          <a class="btn btn-primary" href="/sign-up">Sign Up</a></h4>
+        </div>
+
+        <%}%>
+      </div>
+    </main>
+  </body>
 </html>

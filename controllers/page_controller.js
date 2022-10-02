@@ -9,7 +9,14 @@ const render_index = (req, res) => {
   }
   res.render("pages/index", { messages });
 };
-
+const render_restricted = (req, res) => {
+  let messages = [];
+  if (req.session.messages) {
+    messages = req.session.messages;
+    req.session.messages = [];
+  }
+  res.render("pages/restricted", { messages });
+}
 const render_sign_up = (req, res) => {
   let messages = [];
   if (req.session.messages) {
@@ -40,9 +47,7 @@ const render_queries = (req, res) => {
   res.render("pages/queries", { messages });
 }
 
-// const render_restricted = (req, res) => {
-//   res.render("pages/restricted");
-// };
+
 
 const log_out = (req, res) => {
   req.session.destroy(function (err) {
@@ -58,6 +63,6 @@ module.exports = {
   render_sign_up,
   sign_up,
   render_queries,
-  // render_restricted,
+  render_restricted,
   log_out,
 };

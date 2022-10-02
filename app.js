@@ -42,7 +42,6 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(setCurrentUser);
 app.use("/", page_router);
-// app.use("/restricted", authMiddleware, restricted_router);
 app.use("/queries", authMiddleware, queriesRoute);
 
 app.use(notFoundMiddleware);
